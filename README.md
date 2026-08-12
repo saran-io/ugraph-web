@@ -1,7 +1,7 @@
 # ugraph-web
 
-Marketing and roadmap site for [`ugraph`](../ugraph) — the CLI that builds an
-agent-navigable knowledge base from a YouTube channel.
+Marketing and roadmap site for [`ugraph`](https://github.com/saran-io/ugraph) —
+the CLI that builds an agent-navigable knowledge base from any input.
 
 Zero build step. Three static pages plus one stylesheet.
 

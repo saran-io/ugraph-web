@@ -90,18 +90,20 @@
         </div>
       </div>
 
-      <div class="term" role="img" aria-label="Terminal transcript: ugraph ingest pulls 12 transcripts, ugraph extract emits 47 candidates with 3 quotes rejected and retried, ugraph verify reports 47 of 47 quotes verbatim and 0 failures.">
+      <div class="term" role="img" aria-label="Terminal transcript: bare ugraph captures clipboard text, ugraph extract emits 47 candidates with 3 quotes rejected and retried, ugraph verify reports 47 of 47 quotes verbatim and 0 failures.">
         <div class="term__bar">
           <span class="term__dots"><i></i><i></i><i></i></span>
           <span class="term__title">~/vault/knowledge — zsh</span>
         </div>
-<pre class="term__body"><span class="c-dim">$</span> <span class="c-cmd">ugraph ingest youtube \
-      https://youtube.com/@aiDotEngineer --limit 12</span>
-  <span class="c-ok">✓</span> 12 pulled   <span class="c-dim">raw/ai-engineer/ + sources/ai-engineer/</span>
-  <span class="c-dim">↷</span> 4 skipped   <span class="c-dim">already recorded, state checkpointed per item</span>
+<pre class="term__body"><span class="c-dim"># any input: clipboard, pipe, file, URL…</span>
+<span class="c-dim">$</span> <span class="c-cmd">ugraph</span>
+  <span class="c-key">Detected:</span> pasted text <span class="c-dim">(2.4 KB)</span>
+  <span class="c-dim">Preview: Hybrid retrieval combines lexical…</span>
+  <span class="c-ok">Ingest this? [Y/n]</span> y
+  <span class="c-ok">✓</span> captured   <span class="c-dim">raw/inbox/ + sources/inbox/</span>
 
-<span class="c-dim"># articles, scraped pages and pasted text land the same way:</span>
-<span class="c-dim"># an immutable capture in raw/, a stub page in sources/</span>
+<span class="c-dim">$</span> <span class="c-cmd">printf '…notes…' | ugraph --yes</span>
+<span class="c-dim">$</span> <span class="c-cmd">ugraph ingest file ./article.md</span>
 
 <span class="c-dim">$</span> <span class="c-cmd">ugraph extract --backend ollama --newest 6</span>
   <span class="c-key">▸</span> 47 candidates <span class="c-dim">→ .ugraph/candidates/</span>
@@ -543,8 +545,8 @@ quote inside that marker     <span class="c-ok">→ pass</span></pre>
             <span class="chip">Python 3.10+</span>
             <span class="chip">python-frontmatter</span>
             <span class="chip">tomli · Python &lt; 3.11</span>
-            <span class="chip">yt-dlp · on PATH, for YouTube</span>
-            <span class="chip">anthropic / openai · optional extra</span>
+            <span class="chip">clipboard / pipe / file input</span>
+            <span class="chip">anthropic / openai / ollama · optional</span>
           </div>
           <p style="margin-top:16px;color:var(--ink-4);font-size:.875rem;max-width:60ch">
             The KB root resolves in order: <code class="mono">--kb</code>, then
@@ -563,12 +565,11 @@ quote inside that marker     <span class="c-ok">→ pass</span></pre>
 <pre class="term__body"><span class="c-dim"># 1 — scaffold (or run bare for the wizard)</span>
 <span class="c-cmd">ugraph init ./knowledge</span>
 
-<span class="c-dim"># 2 — pull material. deterministic, no model.</span>
-<span class="c-cmd">ugraph ingest youtube \
-  https://youtube.com/@aiDotEngineer --limit 25</span>
-
-<span class="c-dim">#     anything else: drop the captured text into</span>
-<span class="c-dim">#     raw/&lt;set&gt;/&lt;slug&gt;.md and sources/&lt;set&gt;/&lt;slug&gt;.md</span>
+<span class="c-dim"># 2 — capture any input. deterministic, no model.</span>
+<span class="c-cmd">ugraph</span>
+<span class="c-dim">#     clipboard · paste · pipe · file · URL</span>
+<span class="c-cmd">ugraph ingest file ./notes.md</span>
+<span class="c-cmd">printf 'a claim you care about' | ugraph --yes</span>
 
 <span class="c-dim"># 3 — teach your agent the format</span>
 <span class="c-cmd">ugraph skills install</span>
@@ -613,12 +614,12 @@ quote inside that marker     <span class="c-ok">→ pass</span></pre>
       <div>
         <h3>Not tied to one kind of source</h3>
         <p>
-          Anything you can capture as text becomes the same pair of files: an immutable copy in
+          The CLI accepts <strong>any input you can land as text</strong> — clipboard, paste,
+          pipe, file, or URL. Each capture becomes the same pair of files: an immutable copy in
           <code class="mono">raw/</code> and a page in <code class="mono">sources/</code>.
-          YouTube is the adapter that fetches automatically today; articles, scraped pages and
-          pasted text are landed by capture, and every command downstream treats them
-          identically because the ledger keys on the slug, not on anything video-shaped. More
-          automatic fetchers are on the <a href="backlog.html" style="color:var(--edge)">backlog</a>.
+          Downstream commands treat every source identically because the ledger keys on the slug,
+          not on the input channel. More fetch adapters are on the
+          <a href="backlog.html" style="color:var(--edge)">backlog</a>.
         </p>
       </div>
       <div>

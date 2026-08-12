@@ -136,10 +136,10 @@
 
         <h3>Ingest</h3>
         <ul class="changes">
-          <li><b>YouTube adapter</b> — fetch captions with <code>yt-dlp</code>, normalize to timestamped markdown, and emit an immutable <code>raw/</code> transcript plus a stub <code>sources/</code> page per video. No model involved; the adapter never invents content, it only transports it.</li>
-          <li><b>Incremental and resumable.</b> State is checkpointed after every written video rather than once at the end, so a run against a thousand-video channel is safe to interrupt and safe to re-run in whatever batch size you like.</li>
-          <li><b><code>--newest N</code> instead of <code>--since</code> on ingest</b>, because a flat playlist listing returns no upload date and a date filter would cost a per-video metadata fetch, most of the price of ingesting anyway.</li>
-          <li><b><code>--retry-failed</code></b> reconsiders videos previously recorded as unfetchable.</li>
+          <li><b>Any-input capture</b> — clipboard, paste, pipe, file, or URL lands as an immutable <code>raw/</code> capture plus a stub <code>sources/</code> page. No model involved; ingest only transports content, it never invents it.</li>
+          <li><b>Incremental and resumable.</b> State is checkpointed after every written source rather than once at the end, so large runs are safe to interrupt and safe to re-run in whatever batch size you like.</li>
+          <li><b><code>--newest N</code></b> on batch ingest for bounded pulls without paying for a full metadata scan first.</li>
+          <li><b><code>--retry-failed</code></b> reconsiders sources previously recorded as unfetchable.</li>
         </ul>
 
         <h3>Extraction — opt-in, never in the core</h3>
@@ -174,7 +174,7 @@
 
         <h3>Known gaps in this version</h3>
         <ul class="changes">
-          <li>YouTube is the only adapter that fetches automatically. Any other source works, but its capture is landed by hand or by your own script into the same <code>raw/</code> and <code>sources/</code> pair — <a href="backlog.html" style="color:var(--edge)">UG-05, UG-06</a>.</li>
+          <li>More automatic fetch adapters (RSS, podcast, web page) are still on the backlog; today the primary path is any text you can land via the CLI into the same <code>raw/</code> and <code>sources/</code> pair — <a href="backlog.html" style="color:var(--edge)">UG-05, UG-06</a>.</li>
           <li><code>templates/</code> and <code>skills/</code> resolve from a source checkout when the packaged copy is absent — <a href="backlog.html" style="color:var(--edge)">UG-01</a>.</li>
           <li>No published package and no tagged release yet — <a href="backlog.html" style="color:var(--edge)">UG-02</a>.</li>
           <li>No automated test suite over the three gates — <a href="backlog.html" style="color:var(--edge)">UG-03</a>.</li>

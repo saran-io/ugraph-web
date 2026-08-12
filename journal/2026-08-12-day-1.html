@@ -53,8 +53,9 @@
     <h1>ugraph.build is live — and the daily habit starts</h1>
     <p class="post__lede">
       Today we kick off building <strong>ugraph</strong> in public: an open-source CLI that
-      turns what you watch and copy into a local, agent-navigable knowledge graph —
-      with quotes that must survive a substring check against the source.
+      turns <strong>any input</strong> — clipboard, paste, pipe, file, URL — into a local,
+      agent-navigable knowledge graph, with quotes that must survive a substring check
+      against the source.
     </p>
 
     <div class="post__body">
@@ -80,8 +81,8 @@
 
       <h2>What’s already real in the CLI</h2>
       <ul>
-        <li>Clipboard / YouTube playlist capture with confirm UX</li>
-        <li>Transcript ingest with resume + repair-state</li>
+        <li>Any-input capture (clipboard, pipe, file, URL) with confirm UX</li>
+        <li>Ingest with resume + repair-state</li>
         <li>Extract → candidates with citation checks</li>
         <li>Local-first backends (Ollama) alongside API models</li>
         <li>Plain Markdown KB Obsidian and agents can open without a database</li>
@@ -89,7 +90,7 @@
 
       <h2>What’s next (this week)</h2>
       <ul>
-        <li>Finish the dogfood playlist extract end-to-end</li>
+        <li>Dogfood a full capture → extract → verify loop end-to-end</li>
         <li>Ollama-first story in the README (no API key to try)</li>
         <li><code>ugraph ask</code> with cited answers</li>
         <li>Merge-on-compile so concepts harden across sources</li>
