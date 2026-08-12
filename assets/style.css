@@ -525,3 +525,68 @@ td.flag, td .flag, .flag { font-family: var(--mono); font-size: .78125rem; color
   .foot__grid { grid-template-columns: minmax(0, 1fr); }
   .term__body { font-size: .75rem; }
 }
+
+/* ---------- journal / daily posts -------------------------------------- */
+
+.journal__kicker {
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--ink-4); margin: 0 0 18px;
+}
+.journal__kicker a { color: var(--ink-3); text-decoration: none; }
+.journal__kicker a:hover { color: var(--edge); }
+
+.journal-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.journal-card {
+  display: grid; gap: 10px; text-decoration: none;
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background: var(--bg-raised); padding: 26px 28px;
+  transition: border-color .16s ease, background .16s ease;
+}
+.journal-card:hover { border-color: var(--line-strong); background: var(--bg-hover); }
+.journal-card__day {
+  font-family: var(--mono); font-size: .75rem; color: var(--edge);
+  letter-spacing: .04em;
+}
+.journal-card__meta {
+  display: flex; flex-wrap: wrap; gap: 10px 16px;
+  font-family: var(--mono); font-size: .75rem; color: var(--ink-4);
+}
+.journal-card strong {
+  font-size: 1.25rem; letter-spacing: -.03em; color: var(--ink); font-weight: 560;
+}
+.journal-card p { color: var(--ink-3); font-size: .9375rem; line-height: 1.55; max-width: 62ch; }
+
+.post { max-width: 720px; }
+.post h1 {
+  font-size: clamp(2rem, 4.2vw, 2.85rem); letter-spacing: -.04em; line-height: 1.08;
+}
+.post__lede {
+  margin-top: 22px; color: var(--ink-2); font-size: 1.125rem; line-height: 1.55;
+}
+.post__lede strong { color: var(--ink); font-weight: 540; }
+.post__body { margin-top: 40px; }
+.post__body h2 {
+  margin-top: 36px; font-size: 1.25rem; letter-spacing: -.02em;
+}
+.post__body p, .post__body li {
+  color: var(--ink-2); font-size: 1.025rem; line-height: 1.65;
+}
+.post__body p { margin-top: 14px; }
+.post__body ul { margin: 14px 0 0; padding-left: 1.2em; display: grid; gap: 10px; }
+.post__body a { color: var(--edge); text-decoration: none; }
+.post__body a:hover { text-decoration: underline; }
+.post__body code {
+  font-family: var(--mono); font-size: .875rem; color: var(--edge);
+  background: var(--edge-wash); padding: 1px 6px; border-radius: 5px;
+}
+.post__signoff {
+  margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line);
+  color: var(--ink-3) !important; font-style: italic;
+}
+.post__nav {
+  margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between;
+  font-size: .9375rem;
+}
+.post__nav a { color: var(--ink-3); text-decoration: none; }
+.post__nav a:hover { color: var(--edge); }

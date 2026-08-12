@@ -25,9 +25,26 @@ python3 -m http.server 4173 --directory .
 
 ## Deploy
 
-Any static host. The folder is the artifact — no build, no dependencies. The only
-network request is the Archivo / JetBrains Mono stylesheet from Google Fonts; the CSS falls
-back to the system UI and mono stacks if that is blocked.
+GitHub Pages from [`saran-io/ugraph-web`](https://github.com/saran-io/ugraph-web)
+(`main` / root), custom domain **https://ugraph.build**.
+
+The folder is the artifact — no build, no dependencies. The only network request
+is the Archivo / JetBrains Mono stylesheet from Google Fonts; the CSS falls back
+to the system UI and mono stacks if that is blocked.
+
+### DNS (GoDaddy → GitHub Pages)
+
+Apex `A` records: `185.199.108.153` `185.199.109.153` `185.199.110.153` `185.199.111.153`  
+`www` `CNAME` → `saran-io.github.io`  
+Repo root must contain a `CNAME` file with `ugraph.build`.
+
+If GoDaddy Website Builder / domain forwarding (`dpsAws`) is attached, disconnect
+it in the GoDaddy product UI first — those records are immutable via the DNS API.
+
+### Daily journal
+
+Posts live in `journal/`. Add a dated HTML file, link it from `journal/index.html`,
+ship. Keep entries short: what shipped, what’s next, one honest blocker.
 
 ## Licence
 
